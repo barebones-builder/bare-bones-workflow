@@ -45,7 +45,7 @@
 
 7. **Quality wins.** Fix a limitation or record it in `docs/PROGRESS.md`.
 8. **Surgical edits.** No code file is rewritten whole; a section at a time, the diff read before the commit.
-9. **Test what the change could affect,** by name, before committing. Log what wasn't run. Never loosen a test to pass.
+9. **Test what the change could affect,** by name, before committing. A pass counts only from a run in this session whose output shows how many tests ran; never from memory or a summary. Log what wasn't run. Never loosen a test to pass.
 10. **Every file explains itself.** A short note at the top: purpose, inputs, outputs and reason.
 11. **Sizes are measured every session.** This file [8] KB; `PROGRESS.md` [30] KB; a log entry [10] lines; a decision row [3] lines; a function [60] lines. A limit is moved only by the owner. When `PROGRESS.md` nears its limit, nothing is deleted: older rows move word for word to their own file in `docs/`, leaving a one-line pointer; `settled.md` stays a short summary.
 12. **One documents round a session, at the wrap.** Code may be committed in steps with one-line messages; the log, decisions, settled and PROGRESS are written once, at the end. No history-rewriting git.

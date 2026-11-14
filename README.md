@@ -49,7 +49,7 @@ Also here, outside `template/`: `scars.md`, the failures behind each rule.
 - **One writer in the code at a time.** Two agents editing at once undo each other without either noticing. Others may read, research or draw.
 - **Nothing is undone silently.** A reversal gets its own decision row naming the old one and why, and the old way stays behind a switch until the owner has tried both. This is the rule that stops drift.
 - **Surgical edits.** No file rewritten whole; a section at a time, the diff read before the commit. Whole rewrites lose things nobody notices for weeks.
-- **Test what the change could affect.** Full suites can be slow or heavy on a home machine; targeted tests run every time instead of being skipped. What wasn't run is logged.
+- **Test what the change could affect.** Full suites can be slow or heavy on a home machine; targeted tests run every time instead of being skipped. What wasn't run is logged. A pass counts only from a run in the same session whose output shows how many tests ran, never from memory: a run that tests nothing can still finish "green".
 - **Never loosen a test to make it pass.** A green check that lies is worse than a red one.
 - **Size limits on the docs.** Files the agent reads every session have a cap. Without one they bloat until the agent skims them, and the important line is the one it skips. At the limit, nothing is deleted: older lines move word for word to their own file, leaving a pointer, so `settled.md` can stay a short summary of what's true now.
 - **Every file says what it is** in a short note at the top: purpose, inputs, outputs, why. A fresh agent (or you, in six months) needs no tour.
