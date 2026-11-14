@@ -87,6 +87,8 @@ Keeping the documents up to date takes perhaps a tenth of each session. There's 
 
 The agent can still be wrong. The rules help me spot mistakes and undo them.
 
+These rules are instructions, not locks. An agent can still skip one, most often late in a long session. For the few rules where a single skip does real damage, a hook (in Claude Code, a small check that runs before every command) can make the rule impossible to break. Mine refuses history-rewriting git, the rule behind the first scar in `scars.md`. Ask your agent to set one up, have it explain in plain English what it blocks, and watch it refuse a test command before you trust it.
+
 ## License
 
 CC0 1.0: copy, change and share any of this freely, no credit needed. See `LICENSE`.
