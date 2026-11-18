@@ -1,12 +1,12 @@
 # Scars: what went wrong behind each rule
 
-*Every rule in the template `CLAUDE.md` is here, with what went wrong to create it, ordered by how much damage the incident did, worst first. Sources: seven projects' rule files, decision rows, logs, retros and the agents' own notes. Where nobody wrote down why a rule exists, it says "origin not recorded"; nothing here is guessed.*
+*Every rule in the template is here, with what went wrong to create it, ordered by how much damage the incident did, worst first. Sources: seven projects' rule files, decision rows, logs, retros and the agents' own notes. Where nobody wrote down why a rule exists, it says "origin not recorded"; nothing here is guessed.*
 
 ## How the method grew
 
 It started in **a first project**: about six months of a hobby app built entirely by an AI agent. That's where most of the hard rules came from, each with a dated lesson attached: never rewrite a whole file, commit as you go, no history-rewriting git, the documents must agree at every session boundary, and an automated check passing doesn't prove the thing is right. It also ran a monthly retro that named the month's hardest moment.
 Then, over about six weeks, the rules passed through **five more projects**, each starting from the last one's rules and cutting them down for weight. Along the way came the decision round (decisions scattered through an evening kept stopping the build), every file explaining itself (explaining code back in chat cost more than it taught), sizes measured every session (the limits were routinely broken), three decisions at most, and documents written once at the wrap (per-step rounds had become too many commits to follow).
-**The latest project**, the seventh, took the previous one's rules, cut down again on day one. Over a month of daily sessions it added the crash check, one writer at a time, the standing budget, the wider owner/agent split of decisions and outside reviewers.
+**The latest project**, the seventh, took the previous one's rules, cut down again on day one. Over a month of daily sessions it added the crash check, one writer at a time, asking before every paid run, "is it worth it?", the wider owner/agent split of decisions and outside reviewers. A review of the whole setup at the end of that month added one reviewer per question, a fresh read of every brief, and a new place retiring an old one.
 Two lessons run through all seven. **A rule is earned by a failure, not by sounding sensible** (the first project rolled back a session-end gate the same day it was added, because the habit it enforced had never actually failed). And **a rule trimmed without a check that enforces it comes back as damage**: the first project dropped a file-integrity rule and files were corrupted.
 
 ## Lost work
@@ -65,29 +65,45 @@ Committing whole files would have swept that work into the wrong commit.
 First project: the repo was going public, so third-party copyrighted art was never bundled. The secrets rule came from an earlier project and returned in the previous one when a backend brought keys ("a secret in a diff stops the session"). Another project: real names got into a log entry, a decision row and a commit message. The documents were fixed by a new commit; the commit message stayed, because removing it would mean rewriting history.
 The latest project: a test greeting with memory switched on was "one quit away from becoming a note about" the owner.
 
+**14. A fresh read of every brief; a sent brief is never changed** *(`docs/outside-reviews.md`, the brief)*
+The latest project, over three days: briefs to other labs' models went out with wrong counts, file paths garbled by escape characters, a real name that should have been renamed, the wrong brief, and claims about the code that weren't true. One reviewer, given no numbers, invented its own; another designed around a gap in the description.
+Now a new agent that didn't write the brief reads it cold before it goes. The first check caught a garbled path about to go to two reviewers at once. A brief that has been sent is corrected in a new copy, so the record shows exactly what each reviewer saw.
+
 ## Cost and patience
 
-**14. The standing budget** *(About the owner)*
-The latest project: the agent started 48 paid test replies (about 60 cents) without asking. The owner asked to be asked first.
-Asking before every batch then became its own chore, so it was loosened to a standing yes under a set amount.
+**15. Ask before every paid run** *(About the owner)*
+The latest project: the agent started 48 paid test replies (about 60 cents) without asking. The owner asked to be asked first. Asking before every batch then became its own chore, so it was loosened to a standing yes under a set amount per run and per week.
+It lasted a day: the agents' test runs that day cost about $4, more than eight times what the app's real use cost (under 50 cents). The owner: "Set test runs to 0 - so ask me." Every paid run is now asked first, with the count and the cost, and tests use a cheaper model wherever one can stand in.
 
-**15. Outside eyes check, they don't steer** *(About the owner)*
+**16. Is it worth it?** *(About the owner)*
+The latest project: many sessions in, the owner said, "I am not fully tracking what we're testing." When the agent put a fault in plain terms (how often it happens, what it looks or sounds like) and asked whether it was worth the effort, the owner dropped a costly line of work in one message.
+Now every test, fix and result comes with that framing, unasked, and "can you live with it?" is a real option. The owner's verdict a day later: "possibly one of the most helpful things from my end of all the rules."
+
+**17. Outside eyes check, they don't steer** *(About the owner)*
 The first project ran fresh-eyes audits; one review flagged the same missing test twice, months apart. The latest project: relaying another lab's model as coordinator used up the owner's plan fast, several of a challenger's points were already built or would have misfired, and another model cited papers that don't exist.
 So reviewers challenge at two checkpoints and every claim is checked against the code.
 
-**16. No review pages; at most three things waiting** *(About the owner)*
+**18. One reviewer per question; never a review of a review** *(About the owner)*
+The latest project, at its busiest: a review of the whole setup found the owner carrying notes by hand across about 25 AI conversations a day. One model had been asked to read another's review, then to compare two reviews. Who did what had been re-decided four times in three days and was written in six places that no longer agreed.
+Now each question gets one outside reviewer, a second only before money is spent or something hard to undo, and who does what is written in one place that everything else points to.
+
+**19. A new place retires an old one; one tray out, one tray in** *(rule 15)*
+The same review found 13 places a note could be waiting, and new folders and routines added without the old ones being retired. Replies from other models landed loose on the desktop, and the owner had to tell each session where to find them. The owner: "no wonder I'm feeling the pain."
+Now anything new says what it replaces, and the old one goes in the same session. Briefs go out from one folder; every reply comes back to one other, under any name, and the next session files it.
+
+**20. No review pages; at most three things waiting** *(About the owner)*
 The latest project: the agent built a waveform trimmer and then a numbered audition file, and the owner said, "I think it's better I do this bit myself." The listening queue "always stacks up"; 23 old listens were once cleared in one go.
 Now it's plainly named pairs in a folder, three at a time.
 
-**17. The owner decides taste, the agent the technical; three decisions at most** *(About the owner)*
+**21. The owner decides taste, the agent the technical; three decisions at most** *(About the owner)*
 The decision round came out of a workflow review in an early project: decisions scattered through an evening each stopped the build, so they moved into one opening message. The same week the agent settled two calls by a test score without asking, and the owner made such calls the agent's, recorded and confirmed at the next round. Three at most was copied in from another project a few weeks later, as "lighter than every step up front; the cost is that some decisions wait a session" (why three: not recorded). Here the owner still made every design decision, until the load showed after an outside reviewer named it.
 The agent now makes and records the technical calls.
 
-**18. Short in chat** *(About the owner)*
+**22. Short in chat** *(About the owner)*
 First project: a silent debugging spiral left the owner watching minutes of activity with no word on what it was doing, which led to a one-line note at every milestone. The previous project: diagrams in chat cost "too much in tokens", so "a table beats a paragraph".
 Carried here unchanged.
 
-**19. One documents round, at the wrap** *(rule 12)*
+**23. One documents round, at the wrap** *(rule 12)*
 First project: the documents were reconciled at every session end, so the next session would find them in agreement. Later, with sessions run back to back, the owner found the per-step rounds too many commits to follow, and the round moved to once at the end. The row that made the change wrote down its own cost: a session that breaks midway leaves more work unlogged. The previous project cut further, with one-line step commits, because it "seems to be burning more tokens than most".
 Scar 5 is that cost arriving.
 

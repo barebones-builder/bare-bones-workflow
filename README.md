@@ -10,7 +10,7 @@ AI agents forget everything between sessions, agree too easily, and will happily
 
 | Who | Decides | Never |
 |---|---|---|
-| **The owner** (not a coder) | Goals, priorities and taste: what gets built and in what order; how it looks, sounds, feels and reads; privacy; money past the standing budget; reversing any decision of theirs | Has to read code, review pages or long reports |
+| **The owner** (not a coder) | Goals, priorities and taste: what gets built and in what order; how it looks, sounds, feels and reads; privacy; money; reversing any decision of theirs | Has to read code, review pages or long reports |
 | **The coding agent** (one at a time) | Technical: how a thing is built, which test, trial settings, tidy-ups. Each one recorded in a line the owner can overturn | Reverses an owner's decision silently, or guesses at taste |
 | **Outside reviewers** (models from other labs) | Nothing. They challenge, draft and point out what was missed | See private material, or have a reply acted on before it is checked against the code |
 | **A design model** (optional) | Drafts art or studies in its own folder | Edits the code. The agent copies each approved handoff into the repo the day it wires it, and checks it |
@@ -56,14 +56,16 @@ Also here, outside `template/`: `scars.md`, the failures behind each rule.
 - **Ideas go in PROGRESS with why not now.** Nothing is lost, and nothing sneaks in.
 - **The eye and ear are the gate.** For anything about feel, the change is done when the owner has seen or heard it and said what they felt. Agents are bad judges of taste and good at sounding sure.
 - **A queue limit for the owner.** At most three things wait for the owner to look at or hear; nothing new is added until one is judged.
-- **A standing small budget.** Test runs that spend credit go ahead under a set amount per run and per week; past either, the agent states the count and cost and waits for a yes.
+- **Ask before every paid run.** The agent states the count and the cost and waits for a yes; tests use a cheaper model wherever one can stand in. A standing yes under a small amount was tried, and lasted a day: the test runs that day cost more than eight times the real use.
+- **Is it worth it?** Every test, fix or proposal comes with what it means in daily use and an honest call, and "can you live with it?" is always a real option. Many sessions in, the owner loses track of what a test is for; this is the line that lets them drop the ones that don't matter.
 - **Private stays private.** The owner's personal material lives outside the repository; agents open it only for a task that needs it; tests use invented details.
 - **Deleting files needs a list, not a count.** A clear-out goes file by file, each checked against the backup first. A count can be right while the wrong files go.
 - **Limitations are written, not hidden.** What is known and not fixed goes in a list the next session reads.
+- **A new place retires an old one.** A new folder, file or routine says what it replaces, and the old one goes in the same session. Otherwise notes end up waiting in a dozen places and nobody knows which is current.
 
 ## Outside reviews, in short
 
-Before money is spent on a design, and after a result that surprised anyone, the agent writes a short self-contained brief, renamed and with counts only, that the owner pastes into a model from another lab. Models with no memory get a pasted baseline first, then "what happened since". Notes between models are listed in one shared index. Every reply is checked claim by claim against the real code before anything follows from it. Full method and templates: `template/docs/outside-reviews.md`.
+Before money is spent on a design, and after a result that surprised anyone, the agent writes a short self-contained brief, renamed and with counts only, that the owner pastes into a model from another lab. One reviewer per question, never a review of a review. A fresh agent that didn't write the brief reads it before it goes, and a sent brief is never changed. Models with no memory get a pasted baseline first, then "what happened since". Briefs go out from one folder and replies come back to one other; notes between models are listed in one shared index. Every reply is checked claim by claim against the real code before anything follows from it. Full method and templates: `template/docs/outside-reviews.md`.
 
 ## Quick start (copy-paste into your agent)
 
