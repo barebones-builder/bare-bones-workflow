@@ -10,6 +10,8 @@
 
 Give each reviewer a role, and keep it. One is good at wide, unexpected views; another at careful critique of a plan; another at drafting wording. Calling all of them on everything just adds noise.
 
+**One reviewer per question.** A second only before money is spent or something hard to undo, and then each reads alone: neither sees the other's answer until both are in. **Never a review of a review:** check a reply against the code instead (below).
+
 ## The brief
 
 The owner pastes it, so it must stand alone: the reviewer sees nothing else.
@@ -20,6 +22,8 @@ The owner pastes it, so it must stand alone: the reviewer sees nothing else.
 - **Short.** One or two pages. What was tried, the numbers, what the agent believes and why, and **the questions**, numbered.
 - **Ask to be argued with.** "What would convince you otherwise?" and "What did we miss?" get more than "Does this look right?"
 - **Ask for a recap.** End with: "Close with a short Markdown recap of what you recommend, for the owner to bring back."
+- **Read fresh before it goes.** A new agent session that didn't write the brief reads it cold, with only what the reviewer will get, and checks every name, number and claim against the code. Fix what it finds and read again.
+- **Frozen once sent.** A sent brief is never changed; a correction goes out as a new dated copy, so the record shows exactly what each reviewer saw.
 
 ### Brief template
 
@@ -64,8 +68,10 @@ Keep everything shared with an outside lab in one folder outside the repository,
 | `README - how this folder works.md` | The steps above and the rules below |
 | `00 - baseline and state.md` | Paste first, always; kept current |
 | `history/[date] [topic]/` | Finished rounds: exactly what was shown, and the replies |
+| `to send/` | The one tray out: each brief ready to paste, its files numbered in order. Once sent, it moves into `history/` |
+| `replies/` | The one tray in: the owner saves every reply here, under any name. The next session files it in `history/` beside the brief it answers |
 
-Rules for the folder: renamed always; counts and invented examples only; **nothing is deleted**, finished rounds move into `history/`.
+Rules for the folder: renamed always; counts and invented examples only; **nothing is deleted**, finished rounds move into `history/`; nothing waits anywhere but the two trays.
 
 ### Baseline template
 

@@ -5,12 +5,13 @@
 ## About the owner
 
 - **Not a coder.** The owner says what they want in plain English; the agent implements it.
-- **The owner decides taste, the agent the technical.** The owner's: [how it looks, sounds and reads; the words it uses], privacy, money past the standing budget, and reversing any decision of theirs. The agent's: how a thing is built, which test, a trial's settings, tidy-ups; each one line at the wrap, the owner's to overturn. Explain a taste trade-off and wait; record reasons in `docs/decisions.md`.
+- **The owner decides taste, the agent the technical.** The owner's: [how it looks, sounds and reads; the words it uses], privacy, money, and reversing any decision of theirs. The agent's: how a thing is built, which test, a trial's settings, tidy-ups; each one line at the wrap, the owner's to overturn. Explain a taste trade-off and wait; record reasons in `docs/decisions.md`.
 - **The decision round.** A session opens with one short message: **three decisions at most**, often none, no code. One that appears mid-build is put then; the agent carries on with what doesn't depend on it.
 - **The owner's eye and ear are the gate.** A change to [feel: look, voice, wording] is done when the owner has seen or heard it and said what they felt. No review pages: a before/after pair in `[REVIEW_FOLDER]`, named plainly. At most three wait there at once.
 - **Short in chat.** A table beats a paragraph; one line at every milestone.
-- **Budget.** A standing yes for test runs up to [$/run] a run and [$/week] a week; past either, state the count and cost and wait.
-- **Outside eyes.** The agent coordinates. Models from other labs challenge before money is spent on a design and after a surprising result, by a short brief the owner pastes (`docs/outside-reviews.md`). Every reply is checked against the code before anything follows.
+- **Spending.** Every paid test run is asked first, with the count and the cost; there is no standing yes. Tests use a cheaper model wherever one can stand in.
+- **Is it worth it?** Every test, fix or proposal says what it means in daily use (how often, what the owner would see or hear), with an honest call. "Leave it" or "can you live with it?" is always a real option.
+- **Outside eyes.** The agent coordinates. Models from other labs challenge before money is spent on a design and after a surprising result, by a short brief the owner pastes (`docs/outside-reviews.md`). One reviewer per question, a second only before money is spent or something hard to undo; never a review of a review. Which model does what is written here and nowhere else. Every brief is read fresh before it goes, and every reply is checked against the code before anything follows.
 
 ## What this is
 
@@ -51,6 +52,7 @@
 12. **One documents round a session, at the wrap.** Code may be committed in steps with one-line messages; the log, decisions, settled and PROGRESS are written once, at the end. No history-rewriting git.
 13. **Ideas go in PROGRESS** with why not now.
 14. **Deleting files needs a list,** checked file by file against the backup. Never a count.
+15. **A new place retires an old one.** A new folder, file or routine says which old one it replaces, and that one is retired in the same session.
 
 ## The log entry
 
