@@ -1,6 +1,6 @@
 # Progress
 
-*Read at session start; updated once, at the wrap. **[30] KB maximum** (CLAUDE.md rule 11). Closed work goes to `docs/log/YYYY-MM.md`; what is settled, in one read, is `docs/settled.md`. Keep each item to a few lines: the detail lives in the log or a linked note.*
+*Read at session start; updated once, at the wrap. **[30] KB maximum** (CLAUDE.md rule 11). Closed work goes to `docs/log/YYYY-MM.md`; what is settled, in one read, and what was tried and set aside, is `docs/settled.md`. Keep each item to a few lines: the detail lives in the log or a linked note.*
 
 ## Where we are
 
@@ -24,12 +24,6 @@
 *Every idea goes here with the reason it isn't now. Nothing is lost; nothing sneaks in.*
 
 - **[Idea]** ([who raised it, date]): [one or two lines]. Not now: [why: waiting on X, too costly, not proven, the owner is thinking].
-
-## Tried and set aside
-
-*So a future session doesn't try it again blind. Reopen only with a new reason or on the owner's ask.*
-
-- **[What was tried]** (S[n]): [what happened, in a number if possible]. Set aside because [...].
 
 ## Waiting for the owner
 

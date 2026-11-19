@@ -15,7 +15,7 @@ Two lessons run through all seven. **A rule is earned by a failure, not by sound
 First project: a session reached for a rebase, hit a snag, aborted it under pressure, and silently wiped a day of uncommitted drawing work. Commits are cheap; redrawing isn't.
 It has been carried, unchanged, into every project since. It is now also locked: a hook refuses rebase, `reset --hard` and force-pushes before they run, so the rule no longer depends on the agent remembering it.
 
-**2. Approved work lives in the repo, not in the tool that made it** *(the README's design-model row; not a numbered rule)*
+**2. Approved work lives in the repo, not in the tool that made it** *(CLAUDE.md, Outside eyes; also the README's design-model row)*
 The latest project: the design model kept its approved studies in its own app's session folders, and when the owner deleted old sessions for privacy, a week of studies went with them. Not in git, not in the bin; five checks failed with "study not found".
 They were rebuilt from the assets that survived. The agent now copies every approved handoff into the repo the day it wires it.
 

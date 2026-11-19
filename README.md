@@ -47,7 +47,7 @@ Also here, outside `template/`: `scars.md`, the failures behind each rule.
 - **The owner decides taste; the agent decides the technical, and writes it down.** The owner shouldn't be asked about test settings, and the agent shouldn't guess what "feels right". Recording the agent's calls keeps them overturnable.
 - **At most three decisions in the opening round.** More than three and the owner skims; fewer, better-framed choices get real answers.
 - **One writer in the code at a time.** Two agents editing at once undo each other without either noticing. Others may read, research or draw.
-- **Nothing is undone silently.** A reversal gets its own decision row naming the old one and why, and the old way stays behind a switch until the owner has tried both. This is the rule that stops drift.
+- **Nothing is undone silently.** A reversal gets its own decision row naming the old one and why, and the old way stays behind a switch until the owner has tried both. Once they've chosen, the next session retires the switch, so dead ones don't pile up. This is the rule that stops drift.
 - **Surgical edits.** No file rewritten whole; a section at a time, the diff read before the commit. Whole rewrites lose things nobody notices for weeks.
 - **Test what the change could affect.** Full suites can be slow or heavy on a home machine; targeted tests run every time instead of being skipped. What wasn't run is logged. A pass counts only from a run in the same session whose output shows how many tests ran, never from memory: a run that tests nothing can still finish "green".
 - **Never loosen a test to make it pass.** A green check that lies is worse than a red one.
@@ -77,11 +77,17 @@ Before money is spent on a design, and after a result that surprised anyone, the
 
 **Option A: a brand-new project**
 
-> Read `CLAUDE.md` and every file in `docs/`: they are templates for a workflow I want to run with you. Interview me in plain English, three questions at a time, to fill in every `[placeholder]`; keep any number already in brackets, like the size limits, unless I ask to change it. If this folder isn't a git repository yet, set one up and make the first commit. Rename `docs/log/YYYY-MM.md` to the current month, remove the invented examples, start a short `README.md` for the project, and set up `docs/PROGRESS.md`.
+> Read `CLAUDE.md` and every file in `docs/`: they are templates for a workflow I want to run with you. Interview me in plain English, three questions at a time, to fill in every `[placeholder]`; keep any number already in brackets, like the size limits, unless I ask to change it. If this folder isn't a git repository yet, set one up with a `.gitignore` that keeps out secrets (like `.env` files and keys) and anything private, then make the first commit. Rename `docs/log/YYYY-MM.md` to the current month, remove the invented examples, start a short `README.md` for the project, and set up `docs/PROGRESS.md`.
 
 **Option B: an existing project**
 
-> Read every file in the `template/` folder: it is a workflow I want to run with you. If this folder isn't a git repository yet, set one up and commit what's here before changing anything. Look through my project to draft the "What this is" section of `CLAUDE.md` and "Where we are" in `docs/PROGRESS.md`. Then interview me in plain English, three questions at a time, to fill in the remaining `[placeholders]`; keep any number already in brackets, like the size limits, unless I ask to change it. Where I already have a `CLAUDE.md`, `README.md` or `docs/` file, merge into it and never overwrite what's mine. Move the files into place, remove the invented examples and the `template/` folder, and open our first session with the decision round.
+> Read every file in the `template/` folder: it is a workflow I want to run with you. If this folder isn't a git repository yet, first list anything here that looks secret or private (`.env` files, keys, personal files), put it in a `.gitignore` and show me the list; then set one up and commit what's here before changing anything. Look through my project to draft the "What this is" section of `CLAUDE.md` and "Where we are" in `docs/PROGRESS.md`. Then interview me in plain English, three questions at a time, to fill in the remaining `[placeholders]`; keep any number already in brackets, like the size limits, unless I ask to change it. Where I already have a `CLAUDE.md`, `README.md` or `docs/` file, merge into it and never overwrite what's mine. Move the files into place, remove the invented examples and the `template/` folder, and open our first session with the decision round.
+
+**Optional, for Claude Code: lock the worst rule**
+
+Instructions can be skipped; a hook can't (see Honest caveats). This one guards the rule behind the first scar. Paste it once the setup is done:
+
+> Set up a hook that refuses history-rewriting git before it runs: rebase, `reset --hard`, force-push, `commit --amend`, `clean` and filter-branch. Explain in plain English what it blocks. Then prove it works: try one blocked command in a throwaway test repository and show me the refusal.
 
 ## Honest caveats
 
@@ -89,7 +95,7 @@ Keeping the documents up to date takes perhaps a tenth of each session. There's 
 
 The agent can still be wrong. The rules help me spot mistakes and undo them.
 
-These rules are instructions, not locks. An agent can still skip one, most often late in a long session. For the few rules where a single skip does real damage, a hook (in Claude Code, a small check that runs automatically, for example before every command) can make the rule impossible to break. Mine refuses history-rewriting git, the rule behind the first scar in `scars.md`. Another won't let a session finish while a program it started is still eating CPU: one forgotten background run held a core at full speed for five hours. Ask your agent to set one up, have it explain in plain English what it blocks, and watch it refuse a test command before you trust it.
+These rules are instructions, not locks. An agent can still skip one, most often late in a long session. For the few rules where a single skip does real damage, a hook (in Claude Code, a small check that runs automatically, for example before every command) can make the rule impossible to break. Mine refuses history-rewriting git, the rule behind the first scar in `scars.md`. Another won't let a session finish while a program it started is still eating CPU: one forgotten background run held a core at full speed for five hours. Ask your agent to set one up, have it explain in plain English what it blocks, and watch it refuse a test command before you trust it. The Quick start has a prompt for the git one.
 
 ## License
 

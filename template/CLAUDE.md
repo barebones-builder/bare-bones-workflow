@@ -11,7 +11,7 @@
 - **Short in chat.** A table beats a paragraph; one line at every milestone.
 - **Spending.** Every paid test run is asked first, with the count and the cost; there is no standing yes. Tests use a cheaper model wherever one can stand in.
 - **Is it worth it?** Every test, fix or proposal says what it means in daily use (how often, what the owner would see or hear), with an honest call. "Leave it" or "can you live with it?" is always a real option.
-- **Outside eyes.** The agent coordinates. Models from other labs challenge before money is spent on a design and after a surprising result, by a short brief the owner pastes (`docs/outside-reviews.md`). One reviewer per question, a second only before money is spent or something hard to undo; never a review of a review. Which model does what is written here and nowhere else. Every brief is read fresh before it goes, and every reply is checked against the code before anything follows.
+- **Outside eyes.** The agent coordinates. Models from other labs challenge before money is spent on a design and after a surprising result, by a short brief the owner pastes (`docs/outside-reviews.md`). One reviewer per question, a second only before money is spent or something hard to undo; never a review of a review. Which model does what is written here and nowhere else: [e.g. model A for wide views, model B for critique of a plan; a design model, if any]. A design model drafts in its own folder; the agent copies each approved handoff into the repo the day it wires it. Every brief is read fresh before it goes, and every reply is checked against the code before anything follows.
 
 ## What this is
 
@@ -24,7 +24,7 @@
 | `docs/PROGRESS.md` | Every session: where we are, next, queued, waiting for the owner. |
 | `docs/settled.md` | At the round: what is true today, by area. |
 | `docs/decisions.md` | At the wrap, to add rows; for the reason behind a settled line. |
-| `docs/log/YYYY-MM.md` | Only for detail on a past session. |
+| `docs/log/YYYY-MM.md` | At the wrap, to add the entry (the one copy of its template is there); otherwise only for detail on a past session. |
 | `README.md` | How to run it. Kept true; not a changelog. |
 
 **A session's shape:** read PROGRESS → crash check → decision round → build → checks → the pair for the owner → log, PROGRESS, decisions, settled, sizes → commit. Sessions are named `S[n] — [what it advances]`.
@@ -38,7 +38,7 @@
 1. **[The medium rule.]** [e.g. Everything it writes is read aloud: a change that reads better but sounds worse is out.]
 2. **One variable at a time.** Trials hold everything fixed but the one thing changed; the exact scope the owner approved is recorded, never widened.
 3. **One writer in the code at a time.** A second session may read, research or draw, never edit the code.
-4. **Nothing is undone silently.** A change that reverses an earlier session's work is a decision row that names the old one and says why. The old way stays behind a switch until the owner has tried both.
+4. **Nothing is undone silently.** A change that reverses an earlier session's work is a decision row that names the old one and says why. The old way stays behind a switch until the owner has tried both; once they have chosen, retiring the switch goes into Next session.
 5. **Behaviour lives in [prompt/config files],** code handles delivery. [What belongs where.]
 6. **The owner's private material stays out of the repo** (`[PRIVATE_FOLDER]`); agents open it only for a task that needs it; tests use invented details. A secret in a diff stops work until it is rotated.
 
@@ -47,22 +47,9 @@
 7. **Quality wins.** Fix a limitation or record it in `docs/PROGRESS.md`.
 8. **Surgical edits.** No code file is rewritten whole; a section at a time, the diff read before the commit.
 9. **Test what the change could affect,** by name, before committing. A pass counts only from a run in this session whose output shows how many tests ran; never from memory or a summary. Log what wasn't run. Never loosen a test to pass.
-10. **Every file explains itself.** A short note at the top: purpose, inputs, outputs and reason.
-11. **Sizes are measured every session.** This file [8] KB; `PROGRESS.md` [30] KB; a log entry [10] lines; a decision row [3] lines; a function [60] lines. A limit is moved only by the owner. When `PROGRESS.md` nears its limit, nothing is deleted: older rows move word for word to their own file in `docs/`, leaving a one-line pointer; `settled.md` stays a short summary.
+10. **Every file explains itself.** A short note at the top: purpose, inputs, outputs and reason. Files that can't hold a note (JSON, data) are left as they are.
+11. **Sizes are measured every session.** This file [8] KB; `PROGRESS.md` [30] KB; `settled.md` [12] KB; a log entry [10] lines; a decision row [3] lines; a function [60] lines. A limit is moved only by the owner. When a file nears its limit, nothing is deleted: older rows move word for word to their own file in `docs/`, leaving a one-line pointer, never into another file with a limit.
 12. **One documents round a session, at the wrap.** Code may be committed in steps with one-line messages; the log, decisions, settled and PROGRESS are written once, at the end. No history-rewriting git.
 13. **Ideas go in PROGRESS** with why not now.
-14. **Deleting files needs a list,** checked file by file against the backup. Never a count.
+14. **Deleting files needs a list,** checked file by file against the backup (`[BACKUP_LOCATION]`; git, for files it tracks). Never a count.
 15. **A new place retires an old one.** A new folder, file or routine says which old one it replaces, and that one is retired in the same session.
-
-## The log entry
-
-```
-### S[n] — [title] ([date])
-[One or two sentences: scope.]
-**What changed.** [files and numbers]
-**Checks.** [tests run; "not run, no change to X" for the rest]
-**Sizes.** [this file, PROGRESS.md, this entry, the longest function touched]
-**The review.** [the pair's name and what the owner said, or "waiting"]
-**Decisions.** [one line each; reversals name the old row]
-**Deferred.**
-```
