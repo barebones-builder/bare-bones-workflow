@@ -4,7 +4,7 @@
 
 | ID | Date | Decision | Why | Whose |
 |---|---|---|---|---|
-| S14 · D2 | [date] | **Long readings are cut at paragraph breaks, not every 400 characters.** Reverses S6 · D3's fixed-length cut. The old way stays behind `CUT_MODE=length` for one session, until the owner has heard both. | Mid-sentence cuts made the narrator's voice reset audibly (4 of 10 test readings). The agent's call; technical. | Agent |
+| S14 · D2 | [date] | **Long readings are cut at paragraph breaks, not every 400 characters.** Reverses S6 · D3's fixed-length cut. The old way stays the default while the owner previews the new cut. The comparison switch and decide-by date are in settled. | Mid-sentence cuts made the narrator's voice reset audibly (4 of 10 test readings). The agent's call; technical. | Agent |
 | S14 · D1 | [date] | **The narrator's pause between paragraphs is 0.6 s, not 0.3 s.** For stories only; chat unchanged. | Owner, after the before/after pair: "the longer one lets it breathe". | Owner; heard and approved |
 
 *Both rows are invented examples. Delete them when you add your own.*

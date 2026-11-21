@@ -1,6 +1,6 @@
 # Progress
 
-*Read at session start; updated once, at the wrap. **[30] KB maximum** (CLAUDE.md rule 11). Closed work goes to `docs/log/YYYY-MM.md`; what is settled, in one read, and what was tried and set aside, is `docs/settled.md`. Keep each item to a few lines: the detail lives in the log or a linked note.*
+*Read at session start; updated once, at the wrap. **[30] KB maximum** (CLAUDE.md rule 11). Closed work goes to `docs/log/YYYY-MM.md`; if used, `docs/settled.md` summarises what is settled and what was set aside. Keep each item to a few lines: the detail lives in the log or a linked note. **Only what is open lives here.** At the wrap, a session's account of what it did goes to the log, never here, and its Next row comes out.*
 
 ## Where we are
 
@@ -27,9 +27,9 @@
 
 ## Waiting for the owner
 
-*At most three things to see or hear at once (CLAUDE.md). Each says where the pair is and what question it answers.*
+*At most three things to see or hear at once (CLAUDE.md). Each gives the preview and the question it answers. The approved version stays the default until the owner decides. If you are using the core files only, keep any temporary switch's decide-by date here.*
 
-- **S[n], [what]:** `[REVIEW_FOLDER]/[plain name]`. Question: [the one thing the owner is asked to judge]. The switch back: [...].
+- **S[n], [what]:** `[REVIEW_FOLDER]/[plain name]`. Question: [the one thing the owner is asked to judge]. Temporary switch, if used: [...].
 
 ## Limitations, written not fixed
 

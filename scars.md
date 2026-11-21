@@ -1,19 +1,20 @@
 # Scars: what went wrong behind each rule
 
-*Every rule in the template is here, with what went wrong to create it, ordered by how much damage the incident did, worst first. Sources: seven projects' rule files, decision rows, logs, retros and the agents' own notes. Where nobody wrote down why a rule exists, it says "origin not recorded"; nothing here is guessed.*
+*Every rule in the template is here, with what went wrong to create it, ordered by how much damage the incident did, worst first. Sources: eight projects' rule files, decision rows, logs, retros and the agents' own notes. Where nobody wrote down why a rule exists, it says "origin not recorded"; nothing here is guessed.*
 
 ## How the method grew
 
 It started in **a first project**: about six months of a hobby app built entirely by an AI agent. That's where most of the hard rules came from, each with a dated lesson attached: never rewrite a whole file, commit as you go, no history-rewriting git, the documents must agree at every session boundary, and an automated check passing doesn't prove the thing is right. It also ran a monthly retro that named the month's hardest moment.
 Then, over about six weeks, the rules passed through **five more projects**, each starting from the last one's rules and cutting them down for weight. Along the way came the decision round (decisions scattered through an evening kept stopping the build), every file explaining itself (explaining code back in chat cost more than it taught), sizes measured every session (the limits were routinely broken), three decisions at most, and documents written once at the wrap (per-step rounds had become too many commits to follow).
 **The latest project**, the seventh, took the previous one's rules, cut down again on day one. Over a month of daily sessions it added the crash check, one writer at a time, asking before every paid run, "is it worth it?", the wider owner/agent split of decisions and outside reviewers. A review of the whole setup at the end of that month added one reviewer per question, a fresh read of every brief, and a new place retiring an old one.
+**An eighth project**, a research bench run beside the seventh, started from its rules and added four of its own (scars 24 to 27).
 Two lessons run through all seven. **A rule is earned by a failure, not by sounding sensible** (the first project rolled back a session-end gate the same day it was added, because the habit it enforced had never actually failed). And **a rule trimmed without a check that enforces it comes back as damage**: the first project dropped a file-integrity rule and files were corrupted.
 
 ## Lost work
 
-**1. No history-rewriting git; commit each step that runs green** *(rule 12)*
+**1. Save checked work in steps and avoid history rewrites** *(rule 12)*
 First project: a session reached for a rebase, hit a snag, aborted it under pressure, and silently wiped a day of uncommitted drawing work. Commits are cheap; redrawing isn't.
-It has been carried, unchanged, into every project since. It is now also locked: a hook refuses rebase, `reset --hard` and force-pushes before they run, so the rule no longer depends on the agent remembering it.
+The rule has carried into every project since. A Claude Code hook now refuses rebase, `reset --hard` and force-pushes in the tool calls it watches. Scoped commits and a recoverable copy of untracked work protect more of what can be lost.
 
 **2. Approved work lives in the repo, not in the tool that made it** *(CLAUDE.md, Outside eyes; also the README's design-model row)*
 The latest project: the design model kept its approved studies in its own app's session folders, and when the owner deleted old sessions for privacy, a week of studies went with them. Not in git, not in the bin; five checks failed with "study not found".
@@ -26,10 +27,11 @@ Sharpened in the previous project (config files edited as text at one spot, neve
 **4. Nothing is undone silently** *(rule 4)*
 Earlier projects' decision logs already said "a decision that is undone gets a new row that names the old one" (origin there not recorded). The latest project's day one is the scar: two things built that morning were reversed by afternoon, and nobody knew whether anyone had heard the before and after, "because nothing was written down".
 The switch that keeps the old way reachable until the owner has tried both was added here.
+A month later the switches themselves were the problem. Nothing set a date for choosing, so they piled up: the project's README mentioned switches 123 times, and the job of retiring them had waited ten days at the top of the plan. Each switch now gets a decide-by date, and the opening round lists the overdue ones.
 
 **5. Crash check** *(the session's shape)*
 First project: the charter still listed the checker as work to do weeks after the checker had shipped, so sessions had to stop and ask whenever the pointer and the charter disagreed. Another project opened a session to find two finished stages uncommitted and the plan still a stage behind. The latest project: a session hit its usage limit before the wrap and left nine files uncommitted with no notes, and the next session was told "see PROGRESS", which knew nothing.
-Writing the documents once at the end is tidy, until the end never comes.
+Writing the full wrap once is tidy, until the end never comes. The template now starts the log entry before edits and records approvals as they happen. That gives the next session something it can check against the working folder.
 
 ## Silent errors and near misses
 
@@ -48,6 +50,7 @@ So each session runs its own suites by name and logs what it didn't run. The pri
 **9. Sizes measured; at the limit, move and never delete** *(rule 11)*
 First project: the next-session pointer, meant to be a few lines, grew past 700 lines of closed sessions; a trim check followed. Another project: the rules file doubled in four days (10.6 KB to 19 KB), and every session start cost about 17,000 tokens before any work. Another: the limits were routinely broken (the next-session file twice its limit) until sizes were measured every session. The previous project: PROGRESS was trimmed six times in a session, then got a rolling window. The latest project: the cap was raised eight times, from 8 KB to 45 KB.
 At 44,993 of 45,000 bytes, a whole section moved word for word to its own file, leaving a pointer. Nothing was trimmed.
+Then PROGRESS filled up again the same way: ten sessions each left a "done in" paragraph at the top, the file was back at 44,370 bytes, and one session had to cut an older paragraph to make room for its own. The cap wasn't what failed; finished work was being kept in a file meant for open work. Now what a session did goes to the log at the wrap, and PROGRESS keeps only what's still open.
 
 **10. One variable at a time** *(rule 2)*
 The previous project: "one thing at a time, so the drive can say which". The latest project: a sound-effect comparison came back "both still sound a little bolted on", but the takes differed in the speech and in the effect's random pitch, so nobody could tell which change helped.
@@ -57,12 +60,12 @@ The fix: one render of the words, saved with and without the effect.
 The latest project: the first clear-out plan treated "heard" as disposable and counted moves within the same drive as space saved. An outside reviewer caught it before anything was lost.
 Removal now goes by a file-by-file list checked by hash against the backup.
 
-**12. One writer in the code at a time** *(rule 3)*
+**12. One writer in the project at a time** *(rule 3)*
 The latest project, from day one, with its reason written: the app was one large file, and "two sessions editing it at once undo each other". No incident was recorded before it. Then two sessions in one folder picked the same session numbers, and another session's uncommitted changes sat in most of the files this one had to commit.
-Committing whole files would have swept that work into the wrong commit.
+Committing whole files would have swept that work into the wrong commit. The template now applies one writer to the shared docs as well as the code.
 
 **13. Private material and secrets stay out of the repo** *(rule 6)*
-First project: the repo was going public, so third-party copyrighted art was never bundled. The secrets rule came from an earlier project and returned in the previous one when a backend brought keys ("a secret in a diff stops the session"). Another project: real names got into a log entry, a decision row and a commit message. The documents were fixed by a new commit; the commit message stayed, because removing it would mean rewriting history.
+First project: the repo was going public, so third-party copyrighted art was never bundled. The secrets rule came from an earlier project and returned in the previous one when a backend brought keys ("a secret in a diff stops the session"). Another project: real names got into a log entry, a decision row and a commit message. The documents were fixed by a new commit. The commit message stayed because removing it would require rewriting history. The template leaves room for a coordinated cleanup with the owner's explicit approval if private material does get committed.
 The latest project: a test greeting with memory switched on was "one quit away from becoming a note about" the owner.
 
 **14. A fresh read of every brief; a sent brief is never changed** *(`docs/outside-reviews.md`, the brief)*
@@ -90,6 +93,7 @@ Now each question gets one outside reviewer, a second only before money is spent
 **19. A new place retires an old one; one tray out, one tray in** *(rule 15)*
 The same review found 13 places a note could be waiting, and new folders and routines added without the old ones being retired. Replies from other models landed loose on the desktop, and the owner had to tell each session where to find them. The owner: "no wonder I'm feeling the pain."
 Now anything new says what it replaces, and the old one goes in the same session. Briefs go out from one folder; every reply comes back to one other, under any name, and the next session files it.
+The same thing happened to facts. One size, a memory file's word count, ended up written in five places, each with a different number; minutes after one session tidied it, its own copy was already about 25 words out of date. Now each fact has one home, the other files point to it, and a number that keeps changing comes from a script rather than being copied.
 
 **20. No review pages; at most three things waiting** *(About the owner)*
 The latest project: the agent built a waveform trimmer and then a numbered audition file, and the owner said, "I think it's better I do this bit myself." The listening queue "always stacks up"; 23 old listens were once cleared in one go.
@@ -106,6 +110,28 @@ Carried here unchanged.
 **23. One documents round, at the wrap** *(rule 12)*
 First project: the documents were reconciled at every session end, so the next session would find them in agreement. Later, with sessions run back to back, the owner found the per-step rounds too many commits to follow, and the round moved to once at the end. The row that made the change wrote down its own cost: a session that breaks midway leaves more work unlogged. The previous project cut further, with one-line step commits, because it "seems to be burning more tokens than most".
 Scar 5 is that cost arriving.
+The opposite cost showed up in the latest project: the round was the same size whatever the session. For a fix of about 15 lines of code, the log entry, PROGRESS paragraph, two decision rows and size checks took longer than the fix. Now a small session (nothing to see or hear, no new switch, a few lines of code; if in doubt, it isn't small) writes only its log entry and decision rows, and touches the other files only if one of their lines changed. The definition is kept strict on purpose: a lighter rule with no check behind it is how scar 3 began.
+The same small session's notes found all of this. Nobody was reviewing the workflow; the friction was noticed in passing and written down. Dedicated "review my workflow" sessions are where the rules with no failure behind them came from (see Thin records), so instead of scheduling one, every log entry may now end with one Friction line, and anything that comes up three times goes to the owner at the opening round.
+
+## From a research project
+
+*The eighth project compares designs on invented test cases, with models from other labs as reviewers. Its four additions:*
+
+**24. Evidence in three kinds, kept apart** *(rule 16)*
+A model cited papers that don't exist (scar 17), and reviewers' opinions were starting to read like results.
+Now every claim is marked as our own test, someone's view, or published work, and every citation as verified or not.
+
+**25. Agree how things will be judged before comparing them** *(rule 17)*
+Without it, the test gets quietly shaped around whichever option the agent already liked.
+So "better" is written down first, and the current way is always one of the options. It paid off: a lightly fixed version of the current system passed 21 of 22 test cases where the unfixed one passed none, so any full replacement now has to earn its extra complexity.
+
+**26. The builder never reviews its own work blind** *(`docs/outside-reviews.md`, the brief)*
+A builder asked for a "fresh" read finds what it meant to write, not what it wrote.
+Now the blind read comes from a different model or a fresh session that didn't build it.
+
+**27. Briefs are generated, not written** *(`docs/outside-reviews.md`, the brief)*
+Hand-written briefs took up to nine fresh reads before one came back clean, and the mistakes were all in the prose. The first brief whose tables, counts and examples came straight from the project's files by script passed in one read.
+Hand-written prose is now one short note; the fresh read stays.
 
 ## Thin records
 

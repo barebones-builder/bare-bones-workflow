@@ -19,10 +19,11 @@ The owner pastes it, so it must stand alone: the reviewer sees nothing else.
 - **Self-contained.** No file paths it can't open, no "as discussed", no session numbers without a line saying what they were.
 - **Renamed.** Every person, character and place gets a neutral stand-in (e.g. "the owner", "the assistant", "the second voice"). The agent checks the brief for real names before it goes.
 - **Counts, not content.** "4 of 12 replies invented a detail", not the replies themselves. If an example is needed, invent one.
+- **Generated, not written.** Tables, counts and examples come straight from the project's own files by script. Hand-written prose is one short note.
 - **Short.** One or two pages. What was tried, the numbers, what the agent believes and why, and **the questions**, numbered.
 - **Ask to be argued with.** "What would convince you otherwise?" and "What did we miss?" get more than "Does this look right?"
 - **Ask for a recap.** End with: "Close with a short Markdown recap of what you recommend, for the owner to bring back."
-- **Read fresh before it goes.** A new agent session that didn't write the brief reads it cold, with only what the reviewer will get, and checks every name, number and claim against the code. Fix what it finds and read again.
+- **Read fresh before it goes.** A new agent session that didn't write the brief reads it cold, with only what the reviewer will get, and checks every name, number and claim against the code. Fix what it finds and read again. The same goes for any blind review: the builder never reviews its own work blind; a different model or a fresh session does.
 - **Frozen once sent.** A sent brief is never changed; a correction goes out as a new dated copy, so the record shows exactly what each reviewer saw.
 
 ### Brief template
