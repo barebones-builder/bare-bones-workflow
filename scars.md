@@ -133,6 +133,25 @@ Now the blind read comes from a different model or a fresh session that didn't b
 Hand-written briefs took up to nine fresh reads before one came back clean, and the mistakes were all in the prose. The first brief whose tables, counts and examples came straight from the project's files by script passed in one read.
 Hand-written prose is now one short note; the fresh read stays.
 
+## Added later, from the latest project
+
+*Three lessons the seventh project learned after the template was first shared.*
+
+**28. Silence settles a change; the old way is filed before it goes** *(rule 4)*
+A month in, 24 items were waiting on the owner, some for over a week, and 175 switch names were keeping old versions alive. The owner closed most of them in one go: what they were using every day was the best they'd had.
+Then a reviewer pointed out that removing a switch can lose the way back. A recording keeps what was heard; only the settings, the assets and runnable code keep the chance of making it again, and hosted models change.
+Now a change in daily use with no complaint by its decide-by date is settled, and the old way's settings, assets and a runnable copy are filed before its switch goes.
+
+**29. What the model is handed is checked against its prompt** *(rule 5)*
+The assistant's notes about itself picked up how it was built: note lengths, voice versions, repairs. It then talked about them as if they were its own life.
+Weeks later, a review of everything the assistant is handed found two of its three biggest problems where its memory and its character prompt pulled in opposite directions.
+Now any change to memory or other context is read against the whole prompt for contradictions before it ships.
+
+**30. Private material leaks through the tools, not just the repo** *(rule 6)*
+A review noted that one whole read of the secrets file puts every paid key into the session's history, which the tool keeps; the ask-first rule on that file didn't cover a shell command reading it.
+Separately, another lab's coding agent turned out to keep a snapshot of each turn in the repository's hidden references. 35 of them held private files Git wasn't tracking, and had to be deleted and pruned.
+Now agents never read a secrets file whole (they match the one line they need, or ask), and other tools' snapshots are checked for private files.
+
 ## Thin records
 
 *Rules whose records are thinner than the scars above: no failure behind them, only a cost, or incidents found only in a later search. The owner's account: rules without a recorded incident came out of dedicated "review my workflow" sessions.*
